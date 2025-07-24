@@ -8,7 +8,6 @@ import {
 } from "./repository/game-repository";
 import { z } from "zod";
 
-await connectToMongoDB();
 const app = express();
 
 app.use(express.json());
