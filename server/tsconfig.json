@@ -26,7 +26,7 @@
     // "moduleDetection": "auto",                        /* Control what method is used to detect module-format JS files. */
 
     /* Modules */
-    "module": "node16" /* Specify what module code is generated. */,
+    "module": "Node16" /* Specify what module code is generated. */,
     "outDir": "./dist",
     "rootDir": "./src",
     "moduleResolution": "Node16",
