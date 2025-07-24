@@ -1,14 +1,12 @@
 "use client";
 
-import { startTransition, useEffect, useTransition } from "react";
+import { startTransition, useEffect } from "react";
 
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
-  Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,

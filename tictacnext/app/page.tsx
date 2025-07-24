@@ -1,4 +1,3 @@
-"use server";
 import { getAllGameSessions } from "@/server/actions";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -61,7 +60,7 @@ function GameSessionCard({ session }: GameSessionCardProps) {
     </Card>
   );
 }
-
+export const dynamic = "force-dynamic";
 export default async function Home() {
   const pastSessions = await getAllGameSessions();
   if ("error" in pastSessions) {
