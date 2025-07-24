@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { GameSession } from "@/lib/types";
 import Link from "next/link";
+import DeleteSession from "./_components/delete-session";
 
 interface GameSessionCardProps {
   session: GameSession;
@@ -47,7 +48,7 @@ function GameSessionCard({ session }: GameSessionCardProps) {
             <span className="font-bold text-foreground">{session.draws}</span>
           </p>
         </div>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-4 gap-2">
           <Button
             asChild
             variant="outline"
@@ -55,6 +56,7 @@ function GameSessionCard({ session }: GameSessionCardProps) {
           >
             <Link href={`/replay/${session._id}`}>Replay</Link>
           </Button>
+          <DeleteSession session={session} />
         </div>
       </CardContent>
     </Card>
@@ -66,6 +68,7 @@ export default async function Home() {
   if ("error" in pastSessions) {
     return <div className="text-red-500">{pastSessions.error}</div>;
   }
+
   return (
     <div className="min-h-screen text-white p-4 sm:p-6 lg:p-8 flex flex-col items-center">
       <h1 className="text-4xl font-bold mb-8 text-center text-foreground">
@@ -80,7 +83,7 @@ export default async function Home() {
         </Link>
       </Button>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-        {pastSessions.map((session, index) => (
+        {pastSessions.map((session) => (
           <GameSessionCard key={session._id} session={session} />
         ))}
       </div>

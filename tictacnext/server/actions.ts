@@ -6,8 +6,9 @@ import {
   CreateGameSessionInput,
   createGameSessionSchema,
 } from "../schema/game-sesssion.schema";
+import { revalidatePath } from "next/cache";
 
-const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:3001/api/v1";
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:8080/api/v1";
 
 export async function createGameSession(input: CreateGameSessionInput) {
   const parseResult = createGameSessionSchema.safeParse(input);
@@ -65,14 +66,16 @@ export async function deleteGameSession(id: string) {
     const res = await fetch(`${API_BASE_URL}/game-session/${id}`, {
       method: "DELETE",
     });
-    if (res.status === 204) {
-      return { success: true };
-    }
+
     if (res.status === 404) {
       return { error: "Game session not found" };
     }
-    return { error: "Failed to delete game session" };
+    console.log(res.status);
+    if (res.status !== 204) {
+      return { error: "Failed to delete game session" };
+    }
   } catch (e) {
     return { error: "Network error" };
   }
+  revalidatePath("/");
 }

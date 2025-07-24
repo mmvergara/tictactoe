@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, PartyPopper, Smile, User, Users, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { Metadata } from "next";
 
 function calculateWinner(squares: Array<string | null>): string | null {
   const lines = [
@@ -350,7 +351,6 @@ export default function Game() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
                 transition={{ type: "spring", stiffness: 120, damping: 16 }}
                 className="mt-4 text-center space-y-4"
               >
@@ -382,7 +382,7 @@ export default function Game() {
                     onClick={handleContinueRound}
                     className="py-3 px-6 text-lg shadow-md transition-transform hover:scale-105"
                   >
-                    Play Again
+                    Continue
                   </Button>
                   <Button
                     onClick={handleStopGameSession}
@@ -391,7 +391,7 @@ export default function Game() {
                     disabled={loading}
                   >
                     {loading ? <Loader2 className="animate-spin mr-2" /> : null}
-                    End Session
+                    Stop
                   </Button>
                 </div>
               </motion.div>

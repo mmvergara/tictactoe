@@ -11,7 +11,7 @@ interface Config {
 }
 
 const config: Config = {
-  port: Number(process.env.PORT) || 3000,
+  port: Number(process.env.PORT) || 8080,
   nodeEnv: process.env.NODE_ENV || "development",
   mongoURI: process.env.MONGO_URI!,
   dbName: process.env.DB_NAME || "tictacnext",
