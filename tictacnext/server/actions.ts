@@ -35,9 +35,7 @@ export async function createGameSession(input: CreateGameSessionInput) {
 
 export async function getAllGameSessions() {
   try {
-    const res = await fetch(`${API_BASE_URL}/game-session`, {
-      cache: "no-store",
-    });
+    const res = await fetch(`${API_BASE_URL}/game-session`);
     if (!res.ok) {
       return { error: "Failed to fetch game sessions" };
     }

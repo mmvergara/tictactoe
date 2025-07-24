@@ -1,6 +1,6 @@
 "use server";
 import { getAllGameSessions } from "@/server/actions";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { GameSession } from "@/lib/types";
 import Link from "next/link";
